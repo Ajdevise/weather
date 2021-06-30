@@ -1,0 +1,19 @@
+:host {
+    display: flex; 
+}
+
+.left {
+    background-color: var(--aside-blue);
+    width: min(28.6875rem, 37vw);
+    min-height: 100vh;
+}
+
+@media screen and (max-width: 900px) {
+    :host {
+        flex-direction: column;
+    }
+
+    .left {
+        width: 100%;
+    }
+}

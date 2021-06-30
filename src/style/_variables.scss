@@ -1,6 +1,10 @@
-$background-blue: #100e1d;
-$aside-blue: #1e213a;
-$button-background: #6e707a;
-$clr-text-1: #e7e7eb;
-$clr-text-2: #a09fb1;
-$clr-text-3: #88869d;
+:root {
+    --background-blue: #100e1d;
+    --aside-blue: #1e213a;
+    --button-background: #6e707a;
+    --clr-text-1: #e7e7eb;
+    --clr-text-2: #a09fb1;
+    --clr-text-3: #88869d;
+
+    --bp-medium-large: 56.25em; //900px
+}
