@@ -1,0 +1,10 @@
+.grid-auto-328 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20.5rem, 1fr));
+    gap: 3rem;
+}
+
+.highlights {
+    margin-top: 4.5rem;
+    margin-bottom: 2rem;
+}

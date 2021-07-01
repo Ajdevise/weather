@@ -2,85 +2,10 @@
     
 </div>
 <div class="right">
-    <div class="buttons">
-        <button class="btn btn__rounded btn--bold">&#176;C</button>
-        <button class="btn btn__rounded btn--bold">&#176;F</button>
+    <div class="buttons container">
+        <button class="btn btn__rounded btn--bold active">&#176;C</button>
+        <button class="btn btn__rounded btn--bold u-ml-sm">&#176;F</button>
     </div>
-    <section aria-labelledby="title" class="container grid-auto-120">
-        <span id="title" hidden>5 day forecast</span>
-        
-        <article class="card">
-            <h3 class="card__heading">Tomorrow</h3>
-            <img src="../assets/images/Sleet.png" alt="HeavyCloud" class="card__img card__separator">
-            <div class="card__temp">
-                <strong class="card__temp--primary">16&#176;C</strong>
-                <small class="card__temp--secondary u-ml-sm">11&#176;C</small>
-            </div>
-        </article>
-        <article class="card">
-            <h3 class="card__heading">Sun. 7. Jun</h3>
-            <img src="../assets/images/HeavyCloud.png" alt="HeavyCloud" class="card__img card__separator">
-            <div class="card__temp">
-                <strong class="card__temp--primary">16&#176;C</strong>
-                <small class="card__temp--secondary u-ml-sm">11&#176;C</small>
-            </div>
-        </article>
-        <article class="card">
-            <h3 class="card__heading">Mon. 8. Jun</h3>
-            <img src="../assets/images/LightRain.png" alt="HeavyCloud" class="card__img card__separator">
-            <div class="card__temp">
-                <strong class="card__temp--primary">16&#176;C</strong>
-                <small class="card__temp--secondary u-ml-sm">33&#176;C</small>
-            </div>
-        </article>
-        <article class="card">
-            <h3 class="card__heading">Tue. 9. Jun</h3>
-            <img src="../assets/images/Shower.png" alt="HeavyCloud" class="card__img card__separator">
-            <div class="card__temp">
-                <strong class="card__temp--primary">16&#176;C</strong>
-                <small class="card__temp--secondary u-ml-sm">11&#176;C</small>
-            </div>
-        </article>
-        <article class="card">
-            <h3 class="card__heading">Wed. 10. Jun</h3>
-            <img src="../assets/images/Thunderstorm.png" alt="HeavyCloud" class="card__img card__separator">
-            <div class="card__temp">
-                <strong class="card__temp--primary">16&#176;C</strong>
-                <small class="card__temp--secondary u-ml-sm">11&#176;C</small>
-            </div>
-        </article>
-    </section>
-    <section class="container highlights">
-        <h2 class="u-mb-md">Today's highlights</h2>
-        <div class="grid-auto-328">
-            <article class="card">
-                <h3 class="card__heading">Wind Status</h3>
-                <p class="card__big card__separator">
-                    <strong>7</strong>
-                    <small>mph</small>
-                </p>
-            </article>
-            <article class="card">
-                <h3 class="card__heading">Humidity</h3>
-                <p class="card__big card__separator">
-                    <strong>84</strong>
-                    <small>%</small>
-                </p>
-            </article>
-            <article class="card">
-                <h3 class="card__heading">Visibility</h3>
-                <p class="card__big card__separator">
-                    <strong>6.4</strong>
-                    <small>miles</small>
-                </p>
-            </article>
-            <article class="card">
-                <h3 class="card__heading">Air Pressure</h3>
-                <p class="card__big card__separator">
-                    <strong>998</strong>
-                    <small>mb</small>
-                </p>
-            </article>
-        </div>
-    </section>
+    <app-five-days-forecast></app-five-days-forecast>
+    <app-todays-highlights></app-todays-highlights>
 </div>

@@ -12,20 +12,10 @@
     min-height: 100vh;
 }
 
-.grid-auto-120 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
-    gap: 1.625rem;
-}
-
-.grid-auto-328 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20.5rem, 1fr));
-    gap: 3rem;
-}
-
-.highlights {
-    margin-top: 4.5rem;
+.buttons {
+    text-align: end;
+    margin-top: 2.625rem;
+    margin-bottom: 4.125rem;
 }
 
 @media screen and (max-width: 900px) {

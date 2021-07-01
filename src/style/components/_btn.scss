@@ -1,0 +1,23 @@
+.btn {
+    background-color: var(--button-background);
+    border: none;
+    height: 2.5rem;
+    color: var(--clr-text-1);
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+
+    &__rounded {
+        border-radius: 50%;
+        width: 2.5rem;
+
+        &.active {
+            background-color: var(--clr-text-1);
+            color: var(--button-background);
+        }
+    }
+
+    &--bold {
+        font-weight: 700;
+    } 
+}
