@@ -18,6 +18,16 @@
     gap: 1.625rem;
 }
 
+.grid-auto-328 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20.5rem, 1fr));
+    gap: 3rem;
+}
+
+.highlights {
+    margin-top: 4.5rem;
+}
+
 @media screen and (max-width: 900px) {
     :host {
         flex-direction: column;

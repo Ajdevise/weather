@@ -17,6 +17,14 @@
         margin: 0 auto;
     }
 
+    &__big {
+        font-size: 2.25rem;
+
+        small {
+            font-weight: 300;
+        }
+    }
+
     &__separator {
         margin-top: 1.6rem;
         margin-bottom: 1.9375rem;
