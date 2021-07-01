@@ -2,10 +2,20 @@
     display: flex; 
 }
 
+.right {
+    flex: 1;
+}
+
 .left {
     background-color: var(--aside-blue);
     width: min(28.6875rem, 37vw);
     min-height: 100vh;
+}
+
+.grid-auto-120 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+    gap: 1.625rem;
 }
 
 @media screen and (max-width: 900px) {

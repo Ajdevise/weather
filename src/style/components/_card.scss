@@ -1,0 +1,41 @@
+.card {
+    display: grid;
+    background-color: var(--aside-blue);
+    text-align: center;
+    padding-top: 1.125rem;
+    padding-bottom: 1.125rem;
+
+    &__heading {
+        text-transform: capitalize;
+        font-weight: 500; 
+        font-size: 1rem;
+    }
+
+    &__img {
+        display: block;
+        width: 3.5rem;
+        margin: 0 auto;
+    }
+
+    &__separator {
+        margin-top: 1.6rem;
+        margin-bottom: 1.9375rem;
+    }
+
+    &__temp {
+        align-self: end;
+
+        &--primary,
+        &--secondary {
+            font-weight: 400;
+        }
+
+        &--primary {
+            color: var(--clr-text-1);
+        }
+
+        &--secondary {
+            color: var(--clr-text-2);
+        }
+    }
+}
