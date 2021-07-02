@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { TodaysHighlightsComponent } from './forecast/todays-highlights/todays-highlights.component';
 import { FiveDaysForecastComponent } from './forecast/five-days-forecast/five-days-forecast.component';
 import { ForecastCardComponent } from './forecast/five-days-forecast/forecast-card/forecast-card.component';
+import { WeatherTodayComponent } from './forecast/weather-today/weather-today.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodaysHighlightsComponent,
     FiveDaysForecastComponent,
-    ForecastCardComponent
+    ForecastCardComponent,
+    WeatherTodayComponent
   ],
   imports: [
     BrowserModule,
