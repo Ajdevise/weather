@@ -1,0 +1,67 @@
+:host {
+    display: block;
+    min-height: 100vh;
+}
+
+section {
+    padding: 2.625rem 2.875rem;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr repeat(2, min-content);
+    align-items: center;
+    text-align: center;
+}
+
+.weather-type-img {
+    max-width: 20vh;
+}
+
+figcaption {
+    text-align: center;
+    color: var(--clr-text-2);
+    
+    .temperature {
+        font-size: 15vh;
+        color: var(--clr-text-1);
+        line-height: 25vh;
+    }
+
+    .temperature-unit {
+        font-size: 3rem;
+        font-weight: 400;
+    }
+
+    .weather-type {
+        display: block;
+        font-size: 2.25rem;
+        font-weight: 600;
+    }
+}
+
+time {
+    font-size: 1.125rem;
+    color: var(--clr-text-3);
+    font-weight: 500;
+
+    .dot {
+        display: inline-block;
+        width: .3rem;
+        height: .3rem;
+        border-radius: 50%;
+        background-color: var(--clr-text-3);
+        margin: 0 1rem;
+        transform: translateY(-.2rem);
+    }
+}
+
+.location {
+    color: var(--clr-text-3);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 2rem auto 0 auto;
+
+    svg {
+        width: 1.2em;
+        height: 1.2em;
+    }
+}

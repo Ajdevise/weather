@@ -1,20 +1,33 @@
+@mixin buttonInteraction {
+    background-color: var(--clr-text-1);
+    color: var(--button-background);
+}
+
 .btn {
     background-color: var(--button-background);
     border: none;
-    height: 2.5rem;
     color: var(--clr-text-1);
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
 
+    &:hover {
+        @include buttonInteraction();
+    }
+
     &__rounded {
         border-radius: 50%;
         width: 2.5rem;
+        height: 2.5rem;
+        @include centerContent();
 
         &.active {
-            background-color: var(--clr-text-1);
-            color: var(--button-background);
+            @include buttonInteraction();
         }
+    }
+
+    &__rectangle {
+        padding: 0.6875rem 1.125rem;
     }
 
     &--bold {

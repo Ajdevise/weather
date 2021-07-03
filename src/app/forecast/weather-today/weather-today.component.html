@@ -1,23 +1,33 @@
 <section>
     <h2 class="sr-only">Today's weather</h2>
-    <div>
-        <button aria-hidden="true">Search for places</button>
-        <button>Location</button>
+    <div class="flex space-between">
+        <button aria-hidden="true" class="btn btn__rectangle">Search for places</button>
+        <button aria-label="My location" class="btn btn__rounded">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                <title>gps_fixed</title>
+                <path d="M12 18.984q2.906 0 4.945-2.039t2.039-4.945-2.039-4.945-4.945-2.039-4.945 2.039-2.039 4.945 2.039 4.945 4.945 2.039zM20.953 11.016h2.063v1.969h-2.063q-0.328 2.953-2.672 5.297t-5.297 2.672v2.063h-1.969v-2.063q-2.953-0.328-5.297-2.672t-2.672-5.297h-2.063v-1.969h2.063q0.328-2.953 2.672-5.297t5.297-2.672v-2.063h1.969v2.063q2.953 0.328 5.297 2.672t2.672 5.297zM12 8.016q1.641 0 2.813 1.172t1.172 2.813-1.172 2.813-2.813 1.172-2.813-1.172-1.172-2.813 1.172-2.813 2.813-1.172z"></path>
+            </svg>
+        </button>
     </div>
     <figure>
-        <img src="../../../assets/images/Shower.png" alt="Snow">
+        <img src="../../../assets/images/Shower.png" alt="Shower" class="weather-type-img">
         <figcaption>
-            <p>
-                <strong>15</strong>
-                <small>&#176;C</small>
-            </p>
-            <p>Shower</p>
+            <strong class="temperature-info">
+                <span class="temperature">15</span>
+                <span class="temperature-unit">&#176;C</span>
+            </strong>
+            <span class="weather-type">Shower</span>
         </figcaption>
     </figure>
-    <p>
+    <time datetime="2021-07-02">
         <span>Today</span>
-        <span></span>
+        <span class="dot" aria-hidden="true"></span>
         <span>Fri. 5 Jun</span>
-    </p>
-    <p>Helsinki</p>
+    </time>
+    <div class="location flex align-center" aria-label="location">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 11.484q1.031 0 1.758-0.727t0.727-1.758-0.727-1.758-1.758-0.727-1.758 0.727-0.727 1.758 0.727 1.758 1.758 0.727zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z"></path>
+        </svg>
+        Helsinki
+    </div>
 </section>

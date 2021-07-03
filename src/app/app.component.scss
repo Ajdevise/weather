@@ -1,3 +1,5 @@
+@import "../style/breakpoints"; 
+
 :host {
     display: flex; 
 }
@@ -18,7 +20,7 @@
     margin-bottom: 4.125rem;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $bp-medium-large) {
     :host {
         flex-direction: column;
     }
