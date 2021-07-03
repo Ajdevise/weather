@@ -10,10 +10,20 @@ section {
     grid-template-rows: min-content 1fr repeat(2, min-content);
     align-items: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .weather-type-img {
     max-width: 20vh;
+}
+
+.img-decor {
+    position: absolute;
+    top: 7vh;
+    left: -30%;
+    filter: opacity(.05);
+    width: 160%;
 }
 
 figcaption {
