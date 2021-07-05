@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./five-days-forecast.component.scss']
 })
 export class FiveDaysForecastComponent implements OnInit {
-
+  arbitraryArray: Array<number> = [1, 2, 3, 4, 5];
   constructor() { }
 
   ngOnInit() {
