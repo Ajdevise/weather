@@ -1,19 +1,14 @@
-@mixin buttonInteraction {
+@mixin grayButtonInteraction {
     background-color: var(--clr-text-1);
     color: var(--button-background);
 }
 
 .btn {
-    background-color: var(--button-background);
     border: none;
-    color: var(--clr-text-1);
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
-
-    &:hover {
-        @include buttonInteraction();
-    }
+    transition: all .2s;
 
     &__rounded {
         border-radius: 50%;
@@ -22,12 +17,31 @@
         @include centerContent();
 
         &.active {
-            @include buttonInteraction();
+            @include grayButtonInteraction();
         }
     }
 
     &__rectangle {
         padding: 0.6875rem 1.125rem;
+    }
+
+    &--gray {
+        background-color: var(--button-background);
+        color: var(--clr-text-1);
+
+        &:hover {
+            @include grayButtonInteraction()
+        }
+    }
+
+    &--purple {
+        background-color: var(--button-purple);
+        color: var(--clr-text-1);
+
+        &:hover {
+            outline: 1px solid rgb(206, 206, 206);
+            outline-offset: -6px;
+        }
     }
 
     &--bold {

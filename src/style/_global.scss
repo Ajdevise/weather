@@ -18,3 +18,14 @@ body {
 h2 {
     font-size: 1.5rem;
 }
+
+button,
+input {
+    background: none;
+    border: none;
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}

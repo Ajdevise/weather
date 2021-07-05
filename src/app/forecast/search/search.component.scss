@@ -1,0 +1,27 @@
+section {
+    text-align: right;
+    padding: 1.1875rem 2.6875rem;
+}
+
+.close-btn {
+    color: var(--clr-text-1);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+form {
+    margin-top: 2.125rem;
+
+    input {
+        width: 100%;
+        margin-right: 0.75rem;
+        color: var(--clr-text-1);
+        border: 1px solid var(--clr-text-1);
+        font-size: 1rem;
+        padding: 0.875rem 0 0.875rem 3.0625rem; 
+        background-image: url("../../../assets/images/search.svg");
+        background-repeat: no-repeat;
+        background-size: 1.0625rem;
+        background-position: 0.9375rem;
+    }
+}

@@ -9,6 +9,7 @@ import { TodaysHighlightsComponent } from './forecast/todays-highlights/todays-h
 import { FiveDaysForecastComponent } from './forecast/five-days-forecast/five-days-forecast.component';
 import { ForecastCardComponent } from './forecast/five-days-forecast/forecast-card/forecast-card.component';
 import { WeatherTodayComponent } from './forecast/weather-today/weather-today.component';
+import { SearchComponent } from './forecast/search/search.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { WeatherTodayComponent } from './forecast/weather-today/weather-today.co
     TodaysHighlightsComponent,
     FiveDaysForecastComponent,
     ForecastCardComponent,
-    WeatherTodayComponent
+    WeatherTodayComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
