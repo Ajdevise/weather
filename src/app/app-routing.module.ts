@@ -5,8 +5,8 @@ import { WeatherTodayComponent } from './forecast/weather-today/weather-today.co
 
 
 const routes: Routes = [
-  { path: '', component: WeatherTodayComponent },
-  { path: 'search', component: SearchComponent },
+  { path: '', component: WeatherTodayComponent, data: {animation: 'home'} },
+  { path: 'search', component: SearchComponent, data: {animation: 'search'} },
 ];
 
 @NgModule({

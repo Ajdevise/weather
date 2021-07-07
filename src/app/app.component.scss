@@ -9,6 +9,7 @@ main {
 }
 
 .left {
+    position: relative;
     background-color: var(--aside-blue);
     width: min(28.6875rem, 37vw);
     min-height: 100vh;
@@ -21,7 +22,7 @@ main {
 }
 
 @media screen and (max-width: $bp-medium-large) {
-    :host {
+    main {
         flex-direction: column;
     }
 

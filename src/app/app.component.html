@@ -1,6 +1,6 @@
 <main>
-    <div class="left">
-        <router-outlet></router-outlet>
+    <div class="left" [@routerAnimation]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
     </div>
     <div class="right">
         <div class="buttons flex container">
