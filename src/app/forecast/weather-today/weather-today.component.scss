@@ -25,6 +25,7 @@ section {
     filter: opacity(.05);
     width: 160%;
     pointer-events: none;
+    animation: 8s linear movingClouds alternate-reverse infinite;
 }
 
 figcaption {
@@ -74,5 +75,13 @@ time {
     svg {
         width: 1.2em;
         height: 1.2em;
+    }
+}
+
+@keyframes movingClouds {
+    from {
+        transform: translateX(-40px); 
+    } to {
+        transform: translateX(75px)
     }
 }
