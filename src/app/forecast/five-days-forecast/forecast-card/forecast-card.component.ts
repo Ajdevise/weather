@@ -13,13 +13,14 @@ import {
   styleUrls: ['./forecast-card.component.scss']
 })
 export class ForecastCardComponent implements OnInit {
-  @Input() delay: number;
+  @Input() index: number;
+  @Input() forecast: any;
   @HostBinding("style.animationDelay") animationDelay: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.animationDelay = this.delay + "s";
+    this.animationDelay = this.index * 0.15 + "s";
   }
 
 }

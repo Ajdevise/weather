@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
   selector: 'app-five-days-forecast',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./five-days-forecast.component.scss']
 })
 export class FiveDaysForecastComponent implements OnInit {
-  arbitraryArray: Array<number> = [1, 2, 3, 4, 5];
-  constructor() { }
+  fiveDaysForecast: Array<any>;
+
+  constructor(private weatherApi: WeatherApiService) { }
 
   ngOnInit() {
+    this.fiveDaysForecast = this.weatherApi.getForecastData().splice(1);
   }
 
 }

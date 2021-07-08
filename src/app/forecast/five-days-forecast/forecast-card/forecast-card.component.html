@@ -1,10 +1,15 @@
 <article class="card">
-    <h3 class="card__heading">Tue. 9. Jun</h3>
-    <img src="../assets/images/Shower.png" alt="HeavyCloud" class="card__img card__separator">
+    <h3 class="card__heading">
+        <span *ngIf="index === 0; else date">Tomorrow</span>
+        <ng-template #date>
+            <span>{{ forecast.applicable_date | date: 'EE, MMM d' }}</span>
+        </ng-template>
+    </h3>
+    <img [src]="'../assets/images/' + forecast.weather_state_name + '.png'" [alt]="forecast.weather_state_name" class="card__img card__separator">
     <div class="card__temp">
         <strong>
-            <span class="card__temp--primary" aria-label="temperature">16&#176;C</span>
-            <span class="card__temp--secondary u-ml-sm" aria-label="real feel">16&#176;C</span>
+            <span class="card__temp--primary" aria-label="temperature">{{ forecast.the_temp | number: '1.0-0' }}&#176;C</span>
+            <span class="card__temp--secondary u-ml-sm" aria-label="min temp">{{ forecast.min_temp | number: '1.0-0' }}&#176;C</span>
         </strong>
     </div>
 </article>

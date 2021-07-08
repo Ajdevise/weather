@@ -1,4 +1,4 @@
 <section class="container grid-auto-120">
     <h2 class="sr-only">5 day forecast</h2>
-    <app-forecast-card *ngFor="let arbitraryValue of arbitraryArray; let i = index" [delay]="i * 0.15"></app-forecast-card>
+    <app-forecast-card *ngFor="let forecast of fiveDaysForecast; let i = index" [index]="i" [forecast]="forecast"></app-forecast-card>
 </section>
