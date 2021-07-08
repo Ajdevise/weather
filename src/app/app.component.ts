@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   constructor(private weatherApi: WeatherApiService) {}
 
   ngOnInit() {
+    // If localStorage is not set then ...
+    // this.weatherApi.getForecastData("Athens");
   }
 
   prepareRoute(outlet: RouterOutlet) {
