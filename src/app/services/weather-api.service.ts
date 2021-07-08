@@ -6,21 +6,26 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class WeatherApiService {
-  private fetchedData: Subject<any> = new Subject<Array<any>>();
   private endpoint: string = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
+  private forecastData: any;
 
   constructor(private http: HttpClient) { }
 
-  fetchForecastData(): Subject<Array<any>> {
-    return this.fetchedData;
+  getLocation(): string {
+    return localStorage.getItem('location');
   }
 
-  async getForecastData(locationName: string): Promise<void> {
+  getForecastData(): Array<any> {
+    return this.forecastData;
+  }
+
+  async fetchForecastData(locationName: string): Promise<Array<any>> {
     const woeid = await this.findWoeid(locationName);
     const forecastData = await this.getForecastDataByWoeid(woeid);
 
-    this.fetchedData.next(forecastData);
-    console.log(forecastData);
+    localStorage.setItem('location', locationName);
+    this.forecastData = forecastData;
+    return forecastData;
   }
 
   private async findWoeid(locationName: string): Promise<number> {

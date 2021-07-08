@@ -15,14 +15,15 @@ import { delay } from 'rxjs/operators';
   ]
 })
 export class AppComponent implements OnInit {
-  loading: boolean = false;
+  loading: boolean = true;
+  location: string = localStorage.getItem('location') || 'Athens';
 
   constructor(private weatherApi: WeatherApiService, private loadingService: LoadingService) {}
 
   ngOnInit() {
     // If localStorage is not set then ...
     this.listenToLoading();
-    this.weatherApi.getForecastData("Athens");
+    this.weatherApi.fetchForecastData(this.location);
   }
 
   prepareRoute(outlet: RouterOutlet) {

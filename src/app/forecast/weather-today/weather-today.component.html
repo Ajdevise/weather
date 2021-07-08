@@ -11,24 +11,24 @@
     </div>
     <img src="../../../assets/images/Cloud-background.png" alt="Clouds" aria-hidden="true" class="img-decor">
     <figure>
-        <img src="../../../assets/images/Shower.png" alt="Shower" class="weather-type-img">
+        <img [src]="'../../../assets/images/' + weather.weather_state_name + '.png'" [alt]="weather.weather_state_name" class="weather-type-img">
         <figcaption>
             <strong class="temperature-info">
-                <span class="temperature">15</span>
+                <span class="temperature">{{ weather.the_temp | number: '1.0-0' }}</span>
                 <span class="temperature-unit">&#176;C</span>
             </strong>
-            <span class="weather-type">Shower</span>
+            <span class="weather-type">{{ weather.weather_state_name }}</span>
         </figcaption>
     </figure>
     <time datetime="2021-07-02">
         <span>Today</span>
         <span class="dot" aria-hidden="true"></span>
-        <span>Fri. 5 Jun</span>
+        <span>{{ weather.applicable_date | date: 'EE, MMM d' }}</span>
     </time>
     <div class="location flex align-center" aria-label="location">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 11.484q1.031 0 1.758-0.727t0.727-1.758-0.727-1.758-1.758-0.727-1.758 0.727-0.727 1.758 0.727 1.758 1.758 0.727zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z"></path>
         </svg>
-        Helsinki
+        {{ location }}
     </div>
 </section>

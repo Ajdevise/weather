@@ -8,14 +8,13 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
 })
 export class WeatherTodayComponent implements OnInit {
   weather: any;
+  location: string;
 
   constructor(private weatherApi: WeatherApiService) { }
 
   ngOnInit() {
-    // Check maybe if this component will be initialised after the request has done its job, or it isn't neccessary because it will be loading with http interceptor technique
-    // this.weatherApi.fetchForecastData().subscribe(data => {
-    //   this.weather = data[0];
-    //   console.log(this.weather);
-    // })
+    this.weather = this.weatherApi.getForecastData()[0];
+    this.location = this.weatherApi.getLocation();
+    console.log(this.weather);
   }
 }
