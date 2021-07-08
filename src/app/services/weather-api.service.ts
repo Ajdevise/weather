@@ -20,6 +20,7 @@ export class WeatherApiService {
     const forecastData = await this.getForecastDataByWoeid(woeid);
 
     this.fetchedData.next(forecastData);
+    console.log(forecastData);
   }
 
   private async findWoeid(locationName: string): Promise<number> {

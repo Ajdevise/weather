@@ -21,6 +21,35 @@ main {
     margin-bottom: 4.125rem;
 }
 
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-blue);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .line {
+        width: .4rem;
+        height: 2rem;
+        background-color: #fff;
+        margin-right: 1rem;
+        animation: 1s loadingAnimation ease-in-out infinite alternate-reverse; 
+
+        &--2 {
+            animation-delay: .2s;
+        }
+
+        &--3 {
+            animation-delay: .4s;
+        }
+    }
+}
+
 @media screen and (max-width: $bp-medium-large) {
     main {
         flex-direction: column;
@@ -28,5 +57,13 @@ main {
 
     .left {
         width: 100%;
+    }
+}
+
+@keyframes loadingAnimation {
+    from{
+        transform: scaleY(0.1);
+    } to {
+        transform: scaleY(1);
     }
 }

@@ -1,4 +1,9 @@
-<main>
+<div class="loading" *ngIf="loading">
+    <span class="line line--1"></span>
+    <span class="line line--2"></span>
+    <span class="line line--3"></span>
+</div>
+<main *ngIf="!loading">
     <div class="left" [@routerAnimation]="prepareRoute(outlet)">
         <router-outlet #outlet="outlet"></router-outlet>
     </div>
