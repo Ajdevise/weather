@@ -1,0 +1,18 @@
+.compass {
+    @include centerContent();
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .3);
+    width: 1.875rem;
+    height: 1.875rem;
+
+    &__pin {
+        width: 1rem;
+        transform: translate(-0.05rem, 0.1rem);
+    }
+
+    &__label {
+        font-weight: 500;
+        font-size: 0.875rem;
+        margin-left: 0.5rem;
+    }
+}

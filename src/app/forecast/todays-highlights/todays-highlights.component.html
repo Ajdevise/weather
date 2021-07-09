@@ -1,33 +1,57 @@
 <section class="container highlights">
     <h2 class="u-mb-md">Today's highlights</h2>
     <div class="grid-auto-328">
-        <article class="card">
+        <article class="card card--highlight">
             <h3 class="card__heading">Wind Status</h3>
-            <p class="card__big card__separator">
-                <strong>7</strong>
-                <small>mph</small>
-            </p>
+            <div class="card__big card__separator">
+                <strong>
+                    7<span class="card__unit">mph</span>
+                </strong>
+            </div>
+            <div class="flex align-center justify-center">
+                <div class="compass" [style.transform]="'rotate(' + weather.wind_direction + 'deg)'">
+                    <img src="../../../assets/images/location.svg" alt="compass pin" class="compass__pin">
+                </div>
+                <strong class="compass__label">
+                    <span class="sr-only">Wind directions</span>
+                    {{ weather.wind_direction_compass }}
+                </strong>
+            </div>
         </article>
-        <article class="card">
+        <article class="card card--highlight">
             <h3 class="card__heading">Humidity</h3>
-            <p class="card__big card__separator">
-                <strong>84</strong>
-                <small>%</small>
-            </p>
+            <div class="card__big card__separator">
+                <strong>
+                    {{ weather.humidity }}<span class="card__unit">%</span>
+                </strong>
+            </div>
+            <div class="range" aria-hidden="true">
+                <div class="range__labels">
+                    <span>0</span>
+                    <span>50</span>
+                    <span>100</span>
+                </div>
+                <div class="range__box">
+                    <div class="range__fill" [style.width]="weather.humidity + '%'"></div>
+                </div>
+                <span>%</span>
+            </div>
         </article>
-        <article class="card">
+        <article class="card card--highlight">
             <h3 class="card__heading">Visibility</h3>
-            <p class="card__big card__separator">
-                <strong>6.4</strong>
-                <small>miles</small>
-            </p>
+            <div class="card__big card__separator">
+                <strong>
+                    {{ weather.visibility | number: '1.1-1' }}<span class="card__unit">miles</span>
+                </strong>
+            </div>
         </article>
-        <article class="card">
+        <article class="card card--highlight">
             <h3 class="card__heading">Air Pressure</h3>
-            <p class="card__big card__separator">
-                <strong>998</strong>
-                <small>mb</small>
-            </p>
+            <div class="card__big card__separator">
+                <strong>
+                    {{ weather.air_pressure }}<span class="card__unit">mb</span>
+                </strong>
+            </div>
         </article>
     </div>
 </section>
