@@ -5,7 +5,7 @@
             <h3 class="card__heading">Wind Status</h3>
             <div class="card__big card__separator">
                 <strong>
-                    7<span class="card__unit">mph</span>
+                    {{ weather.wind_speed | number: '1.0-1' }}<span class="card__unit">mph</span>
                 </strong>
             </div>
             <div class="flex align-center justify-center">
@@ -41,7 +41,7 @@
             <h3 class="card__heading">Visibility</h3>
             <div class="card__big card__separator">
                 <strong>
-                    {{ weather.visibility | number: '1.1-1' }}<span class="card__unit">miles</span>
+                    {{ weather.visibility | number: '1.0-1' }}<span class="card__unit">miles</span>
                 </strong>
             </div>
         </article>

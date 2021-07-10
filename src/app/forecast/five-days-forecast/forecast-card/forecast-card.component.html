@@ -5,7 +5,7 @@
             <span>{{ forecast.applicable_date | date: 'EE, MMM d' }}</span>
         </ng-template>
     </h3>
-    <img [src]="'../assets/images/' + forecast.weather_state_name + '.png'" [alt]="forecast.weather_state_name" class="card__img card__separator">
+    <img [src]="'../assets/images/' + (forecast.weather_state_name | join: ' ') + '.png'" [alt]="forecast.weather_state_name" class="card__img card__separator">
     <div class="card__temp">
         <strong>
             <span class="card__temp--primary" aria-label="temperature">{{ forecast.the_temp | number: '1.0-0' }}&#176;C</span>

@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // If localStorage is not set then ...
     this.listenToLoading();
-    this.weatherApi.fetchForecastData(this.location);
+    this.weatherApi.fetchForecastDataByLocationName(this.location);
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
   listenToLoading(): void {
     this.loadingService.loadingSub.pipe(delay(0)).subscribe((loading) => {
       this.loading = loading;
-      console.log(loading);
     })
   }
 }

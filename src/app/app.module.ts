@@ -11,6 +11,7 @@ import { ForecastCardComponent } from './forecast/five-days-forecast/forecast-ca
 import { WeatherTodayComponent } from './forecast/weather-today/weather-today.component';
 import { SearchComponent } from './forecast/search/search.component';
 import { HttpRequestInterceptor } from './interceptors/http-request-interceptor';
+import { JoinPipe } from './pipes/join.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpRequestInterceptor } from './interceptors/http-request-interceptor'
     FiveDaysForecastComponent,
     ForecastCardComponent,
     WeatherTodayComponent,
-    SearchComponent
+    SearchComponent,
+    JoinPipe
   ],
   imports: [
     BrowserModule,

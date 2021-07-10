@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +15,38 @@ export class WeatherApiService {
   }
 
   getForecastData(): Array<any> {
-    return this.forecastData;
+    return JSON.parse(JSON.stringify(this.forecastData));
   }
 
-  async fetchForecastData(locationName: string): Promise<Array<any>> {
-    const woeid = await this.findWoeid(locationName);
-    const forecastData = await this.getForecastDataByWoeid(woeid);
+  async fetchForecastDataByCoordinates(latt: number, long: number): Promise<Array<any>> {
+    const woeid = await this.findWoeidByCoordinates(latt, long);
+    return await this.fetchForecastData(woeid);
+  }
 
-    localStorage.setItem('location', locationName);
+  async fetchForecastDataByLocationName(locationName: string) {
+    const woeid = await this.findWoeidByLocationName(locationName);
+    return await this.fetchForecastData(woeid);
+  }
+
+  private async fetchForecastData(woeid: number): Promise<Array<any>> {
+    const forecastData = await this.getForecastDataByWoeid(woeid);
     this.forecastData = forecastData;
     return forecastData;
   }
 
-  private async findWoeid(locationName: string): Promise<number> {
+  private setLocation(locationName: string) {
+    localStorage.setItem('location', locationName);
+  }
+
+  private async findWoeidByCoordinates(latt: number, long: number) {
+    const response = await this.http.get<{woeid: number}>(`${this.endpoint}search/?lattlong=${latt},${long}`).toPromise();
+    this.setLocation(response[0].title);
+    return response[0].woeid;
+  }
+
+  private async findWoeidByLocationName(locationName: string): Promise<number> {
     const response = await this.http.get<{woeid: number}>(`${this.endpoint}search/?query=${locationName}`).toPromise();
+    this.setLocation(response[0].title);
     return response[0].woeid;
   }
 

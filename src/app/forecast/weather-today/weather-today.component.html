@@ -2,7 +2,7 @@
     <h2 class="sr-only">Today's weather</h2>
     <div class="flex space-between">
         <button aria-hidden="true" class="btn btn__rectangle btn--gray" routerLink="/search">Search for places</button>
-        <button aria-label="My location" class="btn btn__rounded btn--gray">
+        <button aria-label="My location" class="btn btn__rounded btn--gray" (click)="getUserLocationWeatherData()">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
                 <title>gps_fixed</title>
                 <path d="M12 18.984q2.906 0 4.945-2.039t2.039-4.945-2.039-4.945-4.945-2.039-4.945 2.039-2.039 4.945 2.039 4.945 4.945 2.039zM20.953 11.016h2.063v1.969h-2.063q-0.328 2.953-2.672 5.297t-5.297 2.672v2.063h-1.969v-2.063q-2.953-0.328-5.297-2.672t-2.672-5.297h-2.063v-1.969h2.063q0.328-2.953 2.672-5.297t5.297-2.672v-2.063h1.969v2.063q2.953 0.328 5.297 2.672t2.672 5.297zM12 8.016q1.641 0 2.813 1.172t1.172 2.813-1.172 2.813-2.813 1.172-2.813-1.172-1.172-2.813 1.172-2.813 2.813-1.172z"></path>
@@ -11,7 +11,7 @@
     </div>
     <img src="../../../assets/images/Cloud-background.png" alt="Clouds" aria-hidden="true" class="img-decor">
     <figure>
-        <img [src]="'../../../assets/images/' + weather.weather_state_name + '.png'" [alt]="weather.weather_state_name" class="weather-type-img">
+        <img [src]="'../../../assets/images/' + (weather.weather_state_name | join: ' ') + '.png'" [alt]="weather.weather_state_name" class="weather-type-img">
         <figcaption>
             <strong class="temperature-info">
                 <span class="temperature">{{ weather.the_temp | number: '1.0-0' }}</span>
