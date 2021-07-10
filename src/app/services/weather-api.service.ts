@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherApiService {
+  temperatureUnit: Subject<string> = new Subject<string>();
   private endpoint: string = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
   private forecastData: any;
 
@@ -12,6 +14,11 @@ export class WeatherApiService {
 
   getLocation(): string {
     return localStorage.getItem('location');
+  }
+
+  setTemperatureUnit(unit: 'F' | 'C'): void {
+    this.temperatureUnit.next(unit);
+    localStorage.setItem('unit', unit);
   }
 
   getForecastData(): Array<any> {

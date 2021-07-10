@@ -7,9 +7,13 @@
     </h3>
     <img [src]="'../assets/images/' + (forecast.weather_state_name | join: ' ') + '.png'" [alt]="forecast.weather_state_name" class="card__img card__separator">
     <div class="card__temp">
-        <strong>
-            <span class="card__temp--primary" aria-label="temperature">{{ forecast.the_temp | number: '1.0-0' }}&#176;C</span>
-            <span class="card__temp--secondary u-ml-sm" aria-label="min temp">{{ forecast.min_temp | number: '1.0-0' }}&#176;C</span>
+        <strong *ngIf="unit === 'C'">
+            <span class="card__temp--primary" aria-label="temperature">{{ forecast.the_temp | number: '1.0-0' }}&#176;{{ unit }}</span>
+            <span class="card__temp--secondary u-ml-sm" aria-label="min temp">{{ forecast.min_temp | number: '1.0-0' }}&#176;{{ unit }}</span>
+        </strong>
+        <strong *ngIf="unit === 'F'">
+            <span class="card__temp--primary" aria-label="temperature">{{ forecast.the_temp * 9 / 5 + 32 | number: '1.0-0' }}&#176;{{ unit }}</span>
+            <span class="card__temp--secondary u-ml-sm" aria-label="min temp">{{ forecast.min_temp * 9 / 5 + 32 | number: '1.0-0' }}&#176;{{ unit }}</span>
         </strong>
     </div>
 </article>

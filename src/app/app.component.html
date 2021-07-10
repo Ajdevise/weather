@@ -9,8 +9,8 @@
     </div>
     <div class="right">
         <div class="buttons flex container">
-            <button class="btn btn__rounded btn--bold btn--gray u-ml-auto active">&#176;C</button>
-            <button class="btn btn__rounded btn--bold btn--gray u-ml-sm">&#176;F</button>
+            <button class="btn btn__rounded btn--bold btn--gray u-ml-auto" [ngClass]="{'active': unit === 'C'}" (click)="setTemperatureUnit('C')">&#176;C</button>
+            <button class="btn btn__rounded btn--bold btn--gray u-ml-sm" [ngClass]="{'active': unit === 'F'}" (click)="setTemperatureUnit('F')">&#176;F</button>
         </div>
         <app-five-days-forecast></app-five-days-forecast>
         <app-todays-highlights></app-todays-highlights>

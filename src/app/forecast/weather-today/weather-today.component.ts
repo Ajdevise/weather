@@ -8,12 +8,17 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   styleUrls: ['./weather-today.component.scss']
 })
 export class WeatherTodayComponent implements OnInit {
+  unit: string = localStorage.getItem('unit') || 'C';
   weather: any;
   location: string;
 
   constructor(private weatherApi: WeatherApiService, private loadingService: LoadingService) { }
 
   ngOnInit() {
+    this.weatherApi.temperatureUnit.subscribe(unit => {
+      this.unit = unit;
+    })
+    
     this.weather = this.weatherApi.getForecastData()[0];
     this.location = this.weatherApi.getLocation();
   }

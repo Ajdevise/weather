@@ -15,13 +15,13 @@ import { delay } from 'rxjs/operators';
   ]
 })
 export class AppComponent implements OnInit {
+  unit: string = localStorage.getItem("unit") || 'C';
   loading: boolean = true;
   location: string = localStorage.getItem('location') || 'Athens';
 
   constructor(private weatherApi: WeatherApiService, private loadingService: LoadingService) {}
 
   ngOnInit() {
-    // If localStorage is not set then ...
     this.listenToLoading();
     this.weatherApi.fetchForecastDataByLocationName(this.location);
   }
@@ -34,5 +34,10 @@ export class AppComponent implements OnInit {
     this.loadingService.loadingSub.pipe(delay(0)).subscribe((loading) => {
       this.loading = loading;
     })
+  }
+
+  setTemperatureUnit(unit: 'C' | 'F') {
+    this.unit = unit;
+    this.weatherApi.setTemperatureUnit(unit);
   }
 }

@@ -14,8 +14,9 @@
         <img [src]="'../../../assets/images/' + (weather.weather_state_name | join: ' ') + '.png'" [alt]="weather.weather_state_name" class="weather-type-img">
         <figcaption>
             <strong class="temperature-info">
-                <span class="temperature">{{ weather.the_temp | number: '1.0-0' }}</span>
-                <span class="temperature-unit">&#176;C</span>
+                <span class="temperature" *ngIf="unit === 'C'">{{ weather.the_temp | number: '1.0-0' }}</span>
+                <span class="temperature" *ngIf="unit === 'F'">{{ weather.the_temp * 9 / 5 + 32 | number: '1.0-0' }}</span>
+                <span class="temperature-unit">&#176;{{ unit }}</span>
             </strong>
             <span class="weather-type">{{ weather.weather_state_name }}</span>
         </figcaption>
