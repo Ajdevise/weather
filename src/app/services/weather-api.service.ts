@@ -25,7 +25,7 @@ export class WeatherApiService {
     return JSON.parse(JSON.stringify(this.forecastData));
   }
 
-  async fetchForecastDataByCoordinates(latt: number, long: number): Promise<Array<any>> {
+  async fetchForecastDataByCoordinates(latt: number, long: number) {
     const woeid = await this.findWoeidByCoordinates(latt, long);
     return await this.fetchForecastData(woeid);
   }

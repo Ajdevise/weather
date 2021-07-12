@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { url } from 'inspector';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -7,6 +8,9 @@ import { Subject } from 'rxjs';
 export class LoadingService {
   loadingSub: Subject<boolean> = new Subject<boolean>();
   loadingMap: Map<string, boolean> = new Map<string, boolean>();
+  blacklist: Array<string> = [
+    'nominatim.openstreetmap.org'
+  ];
 
   constructor() { }
 
@@ -15,15 +19,27 @@ export class LoadingService {
       throw new Error('The request URL must be provided to the LoadingService.setLoading function')
     }
 
-    if(loading === true) {
-      this.loadingMap.set(url, loading);
-      this.loadingSub.next(true);
-    } else if(loading === false && this.loadingMap.has(url)) {
-      this.loadingMap.delete(url);
+    if(!this.isURLBlacklisted(url)) {
+      if(loading === true) {
+        this.loadingMap.set(url, loading);
+        this.loadingSub.next(true);
+      } else if(loading === false && this.loadingMap.has(url)) {
+        this.loadingMap.delete(url);
+      }
+  
+      if(this.loadingMap.size === 0) {
+        this.loadingSub.next(false);
+      }
+    }
+  }
+
+  isURLBlacklisted(URL: string) {
+    for(let i = 0; i < this.blacklist.length; i++) {
+      if(URL.includes(this.blacklist[i])) {
+        return true;
+      }
     }
 
-    if(this.loadingMap.size === 0) {
-      this.loadingSub.next(false);
-    }
+    return false;
   }
 }
