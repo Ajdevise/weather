@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { fader } from './animations/route.animations';
 import { LoadingService } from './services/loading.service';
 import { delay } from 'rxjs/operators';
+import { City } from './model/city.interface';
 
 
 @Component({
@@ -17,13 +18,17 @@ import { delay } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   unit: string = localStorage.getItem("unit") || 'C';
   loading: boolean = true;
-  location: string = localStorage.getItem('location') || 'Athens';
+  location: City = {
+    name: localStorage.getItem('location') || 'Athens',
+    latt: parseInt(localStorage.getItem('latt')) || 37.98,
+    long: parseInt(localStorage.getItem('long')) || 23.72
+  }
 
   constructor(private weatherApi: WeatherApiService, private loadingService: LoadingService) {}
 
   ngOnInit() {
     this.listenToLoading();
-    this.weatherApi.fetchForecastDataByLocationName(this.location);
+    this.weatherApi.fetchForecastDataByCoordinates(this.location.latt, this.location.long);
   }
 
   prepareRoute(outlet: RouterOutlet) {

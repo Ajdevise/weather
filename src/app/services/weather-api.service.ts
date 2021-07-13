@@ -30,11 +30,6 @@ export class WeatherApiService {
     return await this.fetchForecastData(woeid);
   }
 
-  async fetchForecastDataByLocationName(locationName: string) {
-    const woeid = await this.findWoeidByLocationName(locationName);
-    return await this.fetchForecastData(woeid);
-  }
-
   private async fetchForecastData(woeid: number): Promise<Array<any>> {
     const forecastData = await this.getForecastDataByWoeid(woeid);
     this.forecastData = forecastData;
@@ -45,15 +40,15 @@ export class WeatherApiService {
     localStorage.setItem('location', locationName);
   }
 
+  private setCoordinates(latt: number, long: number) {
+    localStorage.setItem('latt', latt.toString());
+    localStorage.setItem('long', long.toString());
+  }
+
   private async findWoeidByCoordinates(latt: number, long: number) {
     const response = await this.http.get<{woeid: number}>(`${this.endpoint}search/?lattlong=${latt},${long}`).toPromise();
     this.setLocation(response[0].title);
-    return response[0].woeid;
-  }
-
-  private async findWoeidByLocationName(locationName: string): Promise<number> {
-    const response = await this.http.get<{woeid: number}>(`${this.endpoint}search/?query=${locationName}`).toPromise();
-    this.setLocation(response[0].title);
+    this.setCoordinates(latt, long);
     return response[0].woeid;
   }
 

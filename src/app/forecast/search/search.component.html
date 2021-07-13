@@ -14,7 +14,7 @@
         <ul *ngIf="!loading">
             <li *ngFor="let city of cities">
                 <button class="btn-location flex align-center justify-between" (click)="getWeatherInfo(city)">
-                    {{ city }}
+                    {{ city.name }}
                     <img src="../../../assets/images/chevron-right.svg" alt="chevron right" aria-hidden="true">
                 </button>
             </li>
