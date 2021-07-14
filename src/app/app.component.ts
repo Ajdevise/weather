@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   constructor(private weatherApi: WeatherApiService, private loadingService: LoadingService) {}
 
   async ngOnInit() {
+    console.log("Built by Ajdevise");
     this.listenToLoading();
     await this.appInitialization();
   }
