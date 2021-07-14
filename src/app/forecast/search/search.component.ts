@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City } from 'src/app/model/city.interface';
-import { PlacesAPIService } from 'src/app/services/places-api.service';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -12,26 +12,33 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
 export class SearchComponent implements OnInit {
   cities: Array<any> = [];
   loading: boolean = false;
+  noResults: boolean = false;
 
-  constructor(private placesApi: PlacesAPIService, private weatherApi: WeatherApiService, private router: Router) { }
+  constructor(private weatherApi: WeatherApiService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  async getCities(name: string) {
+  async getCities(query: string) {
+    if(query.length < 3) {
+      alert("you must enter atleast three characters");
+      return;
+    }
+
     this.cities = [];
+    this.noResults = false;
     this.loading = true;
-    const cities = await this.placesApi.searchCities(name);
+    const cities = await this.weatherApi.fetchCities(query);
     cities.forEach(city => {
-      console.log(city);
-      const parts: Array<string> = city.display_name.split(", ");
+      const lattLong: Array<string> = city.latt_long.split(",");
       const cityObj: City = {
-        name: `${parts[0]}, ${parts[parts.length - 1]}`,
-        latt: city.lat,
-        long: city.lon
+        name: city.title,
+        latt: parseFloat(lattLong[0].trim()),
+        long: parseFloat(lattLong[1].trim())
       };
       this.cities.push(cityObj);
     })
+    if(this.cities.length === 0) this.noResults = true;
     this.loading = false;
   }
 

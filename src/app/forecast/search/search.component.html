@@ -1,9 +1,9 @@
 <section>
     <h2 class="sr-only">Search weather by location</h2>
     <button class="close-btn" routerLink="">&#10005;</button>
-    <form class="flex">
-        <input type="text" placeholder="Search location" #cityNameInput>
-        <button class="btn btn__rectangle btn--purple" type="button" (click)="getCities(cityNameInput.value)">Search</button>
+    <form class="flex" #searchForm="ngForm" (ngSubmit)="getCities(searchForm.value.searchQuery)">
+        <input type="text" minlength="3" placeholder="Search location" name="searchQuery" ngModel>
+        <button class="btn btn__rectangle btn--purple">Search</button>
     </form>
     <div class="bottom-wrapper">
         <div class="loading loading--light-background loading--absolute" *ngIf="loading">
@@ -11,7 +11,8 @@
             <span class="line line--2"></span>
             <span class="line line--3"></span>
         </div>
-        <ul *ngIf="!loading">
+        <p *ngIf="!loading && noResults" class="no-results">No results for given query!</p>
+        <ul *ngIf="!loading && cities.length > 0">
             <li *ngFor="let city of cities">
                 <button class="btn-location flex align-center justify-between" (click)="getWeatherInfo(city)">
                     {{ city.name }}

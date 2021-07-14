@@ -20,15 +20,27 @@ export class AppComponent implements OnInit {
   loading: boolean = true;
   location: City = {
     name: localStorage.getItem('location') || 'Athens',
-    latt: parseInt(localStorage.getItem('latt')) || 37.98,
-    long: parseInt(localStorage.getItem('long')) || 23.72
+    latt: parseFloat(localStorage.getItem('latt')) || 37.98,
+    long: parseFloat(localStorage.getItem('long')) || 23.72
   }
 
   constructor(private weatherApi: WeatherApiService, private loadingService: LoadingService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.listenToLoading();
-    this.weatherApi.fetchForecastDataByCoordinates(this.location.latt, this.location.long);
+    await this.appInitialization();
+  }
+
+  async appInitialization() {
+    try {
+      this.loadingService.setLoading(true, 'geolocation');
+      await this.weatherApi.fetchUserLocationWeatherData();
+    } catch(e) {
+      alert("Location Access Denied");
+      await this.weatherApi.fetchForecastDataByCoordinates(this.location.latt, this.location.long);
+    } finally {
+      this.loadingService.setLoading(false, 'geolocation');
+    }
   }
 
   prepareRoute(outlet: RouterOutlet) {

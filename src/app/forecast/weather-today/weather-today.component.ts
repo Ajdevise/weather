@@ -26,18 +26,11 @@ export class WeatherTodayComponent implements OnInit {
   async getUserLocationWeatherData() {
     try {
       this.loadingService.setLoading(true, 'geolocation');
-      const coordinates = await this.getUserLocationCoordinates();
-      await this.weatherApi.fetchForecastDataByCoordinates(coordinates.latt, coordinates.long);
+      await this.weatherApi.fetchUserLocationWeatherData();
     } catch(e) {
-      alert("Location access denied");
+      alert("Location Access Denied");
     } finally {
       this.loadingService.setLoading(false, 'geolocation');
     }
-  }
-
-  getUserLocationCoordinates(): Promise<{latt: number, long: number}> {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(response => resolve({ latt: response.coords.latitude, long: response.coords.longitude }), err => reject(err));
-    })
   }
 }

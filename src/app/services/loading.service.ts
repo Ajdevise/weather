@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { url } from 'inspector';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -9,7 +8,7 @@ export class LoadingService {
   loadingSub: Subject<boolean> = new Subject<boolean>();
   loadingMap: Map<string, boolean> = new Map<string, boolean>();
   blacklist: Array<string> = [
-    'nominatim.openstreetmap.org'
+    'https://www.metaweather.com/api/location/search/?query='
   ];
 
   constructor() { }
