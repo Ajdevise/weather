@@ -8,7 +8,7 @@ import { LoadingService } from './loading.service';
 })
 export class WeatherApiService {
   temperatureUnit: Subject<string> = new Subject<string>();
-  private endpoint: string = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location";
+  private endpoint: string = "https://www.metaweather.com/api/location";
   private forecastData: any;
 
   constructor(private http: HttpClient, private loadingService: LoadingService) { }
