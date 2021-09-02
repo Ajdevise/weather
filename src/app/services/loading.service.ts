@@ -8,7 +8,7 @@ export class LoadingService {
   loadingSub: Subject<boolean> = new Subject<boolean>();
   loadingMap: Map<string, boolean> = new Map<string, boolean>();
   blacklist: Array<string> = [
-    'https://www.metaweather.com/api/location/search/?query='
+    'https://www.metaweather.com/api/location/search/?query=',
   ];
 
   constructor() { }
@@ -33,6 +33,7 @@ export class LoadingService {
   }
 
   isURLBlacklisted(URL: string) {
+    URL = decodeURIComponent(URL);
     for(let i = 0; i < this.blacklist.length; i++) {
       if(URL.includes(this.blacklist[i])) {
         return true;

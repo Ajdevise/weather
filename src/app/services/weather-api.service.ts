@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherApiService {
   temperatureUnit: Subject<string> = new Subject<string>();
-  private endpoint: string = "https://www.metaweather.com/api/location";
+  private endpoint: string = `https://api.allorigins.win/get?url=${encodeURIComponent("https://www.metaweather.com/api/location")}`;
   private forecastData: any;
 
-  constructor(private http: HttpClient, private loadingService: LoadingService) { }
+  constructor(private http: HttpClient) { }
 
   getLocation(): string {
     return localStorage.getItem('location');
@@ -27,25 +26,15 @@ export class WeatherApiService {
   }
 
   async fetchCities(query: string): Promise<Array<any>> {
-    return await this.http.get<Array<any>>(`${this.endpoint}/search/?query=${query}`).toPromise();
+    let response = await this.http.get<{contents: string}>(`${this.endpoint}/search/?query=${query}`).toPromise();
+    let cities = JSON.parse(response.contents);
+    return cities;
   }
 
   async fetchForecastDataByCoordinates(latt: number, long: number) {
     const woeid = await this.findWoeidByCoordinates(latt, long);
     return await this.fetchForecastData(woeid);
   }
-
-  // async fetchUserLocationWeatherData() {
-  //   try {
-  //     this.loadingService.setLoading(true, 'geolocation');
-  //     const coordinates = await this.getUserLocationCoordinates();
-  //     await this.fetchForecastDataByCoordinates(coordinates.latt, coordinates.long);
-  //   } catch(e) {
-  //     alert("Location access denied");
-  //   } finally {
-  //     this.loadingService.setLoading(false, 'geolocation');
-  //   }
-  // }
 
   async fetchUserLocationWeatherData() {
     const coordinates = await this.getUserLocationCoordinates();
@@ -74,14 +63,16 @@ export class WeatherApiService {
   }
 
   private async findWoeidByCoordinates(latt: number, long: number) {
-    const response = await this.http.get<{woeid: number}>(`${this.endpoint}/search/?lattlong=${latt},${long}`).toPromise();
+    let response = await this.http.get<{contents: string}>(`${this.endpoint}/search/?lattlong=${latt},${long}`).toPromise();
+    response = JSON.parse(response.contents);
     this.setLocation(response[0].title);
     this.setCoordinates(latt, long);
     return response[0].woeid;
   }
 
   private async getForecastDataByWoeid(woeid: number): Promise<Array<any>> {
-    const response = await this.http.get<any>(this.endpoint + "/" + woeid).toPromise();
+    let response = await this.http.get<any>(this.endpoint + "/" + woeid).toPromise();
+    response = JSON.parse(response.contents);
     return response.consolidated_weather;
   }
 }
